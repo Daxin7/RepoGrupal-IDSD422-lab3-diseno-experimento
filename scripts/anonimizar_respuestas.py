@@ -1,18 +1,3 @@
-# anonimizar_respuestas.py — Paso del export crudo del formulario al CSV anonimizado.
-#
-# El archivo crudo (export de Google Forms) NO se sube al repositorio: queda en el
-# drive privado del equipo y aquí solo se pasa su ruta. El script deja en
-# plantillas/encuesta_respuestas.csv una fila por persona, con origen = real.
-#
-# Qué se quita o se codifica antes de compartir:
-#   - Marca temporal con hora     -> solo la fecha, en formato ISO (AAAA-MM-DD)
-#   - Nombre del integrante       -> código E1, E2, ... (orden de primera aparición)
-#   - Texto largo del consentimiento -> "Sí" / "No"
-#   - Persona                     -> identificador R001, R002, ... sin vínculo a datos personales
-#   - Etiquetas "4 = Satisfecho"  -> el número de la escala (1 a 5)
-#
-# Uso (desde la raíz del repositorio):
-#   python scripts/anonimizar_respuestas.py "ruta/al/export_crudo.csv"
 
 import sys
 from pathlib import Path
