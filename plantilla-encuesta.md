@@ -288,269 +288,100 @@ El formulario abre con un texto basado en la Ley Orgánica de Protección de Dat
 
 Con 23 personas de una red conocida, la combinación de edad, fecha e integrante podría permitir que alguien cercano adivine quién respondió. Por eso los resultados se presentan siempre agregados y no se publican cruces de respuestas por integrante y fecha.
 
-## 7. Verificación con herramientas (Python/R)
+## 7. Datos de la encuesta aplicada y verificación (Python)
 
-**Herramienta seleccionada:** Python 3 con la biblioteca pandas.
+### 7.1. Recolección
 
-**Archivo:** `scripts/verificacion_encuesta.py`
+- **Fechas:** del 5 al 9 de noviembre de 2026 (3 respuestas el 5, 4 el 8 y 16 el 9).
+- **Instrumento:** formulario en línea (Google Forms) con el cuestionario de la sección 4, compartido por cada integrante con su red de contactos.
+- **Archivo:** `plantillas/encuesta_respuestas.csv`, anonimizado según la sección 6.
 
-El script tendrá como objetivo comprobar la estructura del CSV, detectar valores faltantes, verificar los tipos de datos y analizar las distribuciones de satisfacción y recomendación.
+### 7.2. Participantes y no respuesta (solo parte real)
 
-Además, permitirá separar respuestas reales y simuladas, evitando que los registros artificiales distorsionen la interpretación de los resultados.
+| Etapa | Personas |
+|---|---:|
+| Personas contactadas | **[COMPLETAR: n]** |
+| No contestaron el formulario (no respuesta) | **[COMPLETAR: n]** |
+| Respondieron el formulario | 23 |
+| Terminaron en el filtro "compra habitual en RetailAndina" | 2 |
+| Excluidas por contradicción en el filtro de edad | 3 |
+| Excluidas por no residir en Quito | 1 |
+| Excluidas por no haber comprado en los últimos 30 días | 1 |
+| **Respuestas reales válidas** | **16** |
 
-### 7.1. Código de verificación
+**Tasa de respuesta** = 23 ÷ personas contactadas × 100 = **[COMPLETAR] %**.
+
+Las 23 filas reales están en el CSV, incluidas las que no pasaron los filtros, para que la exclusión quede a la vista y se pueda repetir con código.
+
+### 7.3. Estructura del CSV
+
+El archivo tiene 80 filas (23 reales y 57 simuladas) y 17 columnas: una por cada pregunta del formulario (consentimiento, cuatro filtros y ocho preguntas) más cuatro de registro.
+
+| Columna | Contenido |
+|---|---|
+| `respuesta_id` | Código de la fila: R001 a R023 (reales) y R024 a R080 (simuladas) |
+| `fecha` | Fecha de la respuesta (AAAA-MM-DD); vacía en las simuladas |
+| `encuestador` | Integrante que hizo el contacto, codificado E1 a E4; vacío en las simuladas |
+| `consentimiento` | "Sí" |
+| `mayor_18`, `reside_quito`, `compra_30_dias`, `cliente_retailandina` | Preguntas filtro (Sí / No) |
+| `edad` a `comentario` | Preguntas P1 a P8 (sección 4) |
+| `origen` | `real` o `simulada` |
+
+Para trabajar solo con las respuestas reales válidas:
 
 ```python
-from pathlib import Path
 import pandas as pd
 
-# TODO 1: Cargar el CSV con pandas
-ruta = (
-    Path(__file__).resolve().parent.parent
-    / "plantillas"
-    / "encuesta_respuestas.csv"
-)
-
-df = pd.read_csv(ruta)
-
-print("=== AUDITORÍA DE ENCUESTA ===")
-print("Registros:", len(df))
-print("Columnas:", len(df.columns))
-
-# TODO 2: Mostrar los dtypes
-print("\n=== TIPOS DE DATOS ===")
-print(df.dtypes)
-
-# TODO 3: Mostrar los datos faltantes
-print("\n=== DATOS FALTANTES ===")
-print(df.isna().sum())
-
-# TODO 4: Distribuciones generales
-for columna in [
-    "satisfaccion_general",
-    "recomendaria"
-]:
-    print(f"\n=== {columna} ===")
-    print(
-        df[columna].value_counts(
-            dropna=False
-        ).sort_index()
-    )
-
-# Separar las respuestas reales de las simuladas
-if "origen" in df.columns:
-    reales = df.loc[
-        df["origen"].astype(str).str.lower()
-        == "real"
-    ].copy()
-
-    simuladas = df.loc[
-        df["origen"].astype(str).str.lower()
-        == "simulada"
-    ].copy()
-
-    print("\n=== ORIGEN DE LOS DATOS ===")
-    print("Reales:", len(reales))
-    print("Simuladas:", len(simuladas))
-else:
-    raise ValueError(
-        "El CSV debe contener la columna origen"
-    )
-
-# Auditoría únicamente de registros reales
-print("\n=== ANÁLISIS DE RESPUESTAS REALES ===")
-
-if reales.empty:
-    print("Aún no existen respuestas reales.")
-else:
-    for columna in [
-        "satisfaccion_general",
-        "recomendaria"
-    ]:
-        print(f"\n{columna}:")
-        print(
-            reales[columna].value_counts(
-                dropna=False
-            ).sort_index()
-        )
-
-    print("\nFaltantes en registros reales:")
-    print(reales.isna().sum())
-
-    print("\nPorcentaje de recomendación:")
-    recomendacion = (
-        reales["recomendaria"].eq("Si").mean()
-        * 100
-    )
-    print(f"{recomendacion:.2f}%")
-
-    print("\nSatisfacción favorable (4 o 5):")
-    validas = pd.to_numeric(
-        reales["satisfaccion_general"],
-        errors="coerce"
-    ).dropna()
-
-    if len(validas) > 0:
-        porcentaje = validas.ge(4).mean() * 100
-        print(f"{porcentaje:.2f}%")
-    else:
-        print("Sin puntuaciones válidas")
-
-    # Revisión de variables adicionales
-    for columna in [
-        "frecuencia_visita",
-        "interes_programa",
-        "beneficio_preferido",
-        "aspecto_mejora"
-    ]:
-        if columna in reales.columns:
-            print(f"\nDistribución de {columna}:")
-            print(
-                reales[columna].value_counts(
-                    dropna=False
-                )
-            )
-
-    # Comprobaciones de validez
-    if "edad" in reales.columns:
-        edad = pd.to_numeric(
-            reales["edad"],
-            errors="coerce"
-        )
-        print(
-            "\nEdades inválidas:",
-            (edad.lt(18) | edad.isna()).sum()
-        )
-
-    for columna in [
-        "satisfaccion_general",
-        "interes_programa"
-    ]:
-        if columna in reales.columns:
-            valores = pd.to_numeric(
-                reales[columna],
-                errors="coerce"
-            )
-            invalidos = (
-                ~valores.isin([1, 2, 3, 4, 5])
-            ).sum()
-            print(
-                f"Valores inválidos en {columna}:",
-                invalidos
-            )
-
-    # Posibles señales de sesgo
-    print("\n=== INTERPRETACIÓN PRELIMINAR ===")
-    print(
-        "Una concentración de participantes "
-        "en una sola categoría puede indicar "
-        "un problema de cobertura."
-    )
-    print(
-        "Una concentración extrema de "
-        "respuestas positivas requiere "
-        "revisar un posible sesgo de respuesta."
-    )
-    print(
-        "El sesgo de no respuesta necesita "
-        "también el registro de invitaciones "
-        "y rechazos."
-    )
+df = pd.read_csv("plantillas/encuesta_respuestas.csv")
+filtros = ["mayor_18", "reside_quito", "compra_30_dias", "cliente_retailandina"]
+validas = df[(df["origen"] == "real") & df[filtros].eq("Sí").all(axis=1)]
 ```
 
-### 7.2. Ejecución sobre el CSV de ejemplo
+El CSV se reconstruye desde la raíz con `python scripts/anonimizar_respuestas.py "<ruta al export crudo>"` y luego `python scripts/simular_respuestas.py`.
 
-El CSV original del repositorio contiene cuatro filas ilustrativas, tres marcadas como reales y una como simulada.
+### 7.4. Filas simuladas (declaración)
 
-Estas filas son únicamente ejemplos suministrados en la plantilla del laboratorio y no constituyen resultados recolectados por el Equipo 3.
+Para tener más volumen en los análisis del capítulo 4 y del laboratorio 7, el CSV se completó hasta 80 filas con 57 respuestas simuladas, generadas con `scripts/simular_respuestas.py` (semilla 2026):
 
-Al ejecutar la auditoría sobre ese archivo se obtienen diez columnas:
+- Cada pregunta cerrada se sortea con las frecuencias de las 16 respuestas reales válidas, sumando un "voto" extra a cada opción para que también aparezcan opciones que nadie eligió, como "Varias veces por semana" u "Otro".
+- La edad sale de una distribución normal con la media (21,4) y la desviación (2,4) de las edades reales, redondeada y con mínimo 18. Por eso las simuladas heredan el perfil joven de la muestra real.
+- Cada pregunta se sortea por separado, así que las simuladas no reproducen la relación entre preguntas (por ejemplo, entre satisfacción y recomendación).
+- Los filtros y el consentimiento van en "Sí"; fecha, integrante y comentario quedan vacíos porque no hubo una aplicación real.
+- Todas llevan `origen = simulada`. No se usan para conclusiones ni para el análisis de sesgos.
 
-| Columna | Dtype detectado | Faltantes |
-|---|---|---:|
-| `respuesta_id` | `object` | 0 |
-| `fecha` | `object` | 0 |
-| `ciudad` | `object` | 0 |
-| `edad` | `int64` | 0 |
-| `genero` | `object` | 0 |
-| `frecuencia_visita` | `object` | 0 |
-| `satisfaccion_general` | `int64` | 0 |
-| `recomendaria` | `object` | 0 |
-| `comentario` | `object` | 1 |
-| `origen` | `object` | 0 |
+### 7.5. Resultados con las respuestas reales válidas (n = 16)
 
-**Distribución de satisfacción general, cuatro registros de ejemplo:**
+| Indicador | Resultado |
+|---|---|
+| Satisfacción favorable (4 o 5) | 62,5 % (10 de 16) |
+| Satisfacción promedio (escala 1–5) | 3,81 |
+| Recomendaría RetailAndina | 100 % (16 de 16) |
+| Interés en el programa (4 o 5) | 50,0 % (8 de 16) |
+| Beneficio preferido | Descuentos directos: 37,5 % (6 de 16) |
+| Aspecto a mejorar más elegido | Rapidez en caja: 31,3 % (5 de 16) |
 
-| Satisfacción | Frecuencia |
-|---|---:|
-| 3 | 1 |
-| 4 | 2 |
-| 5 | 1 |
+Por frecuencia de compra (objetivo específico 6), la satisfacción no muestra un patrón claro, pero el interés sí: los 4 clientes que compran cada semana se declaran interesados en el programa, frente a 1 de 4 entre quienes compran una vez al mes. Con grupos tan pequeños es solo una pista, aunque tiene sentido: un programa de fidelización atrae más a quien compra seguido.
 
-**Distribución de recomendación, cuatro registros de ejemplo:**
+**Lectura para la gerencia:** los descuentos directos son el beneficio más pedido y la rapidez en caja es la queja principal. El interés en el programa está dividido (la mitad se declara interesada y una de cada cuatro personas, poco interesada), así que el lanzamiento necesita un beneficio concreto y fácil de entender. La recomendación del 100 % se toma con cautela por el posible sesgo de cortesía (sección 5). Todo esto describe a 16 clientes jóvenes de la red del equipo, no a toda la clientela de Quito.
 
-| Recomendación | Frecuencia |
-|---|---:|
-| Si | 3 |
-| No | 1 |
+### 7.6. Verificación con Python (opcional en esta entrega)
 
-**Separación por origen:**
+`scripts/verificacion_encuesta.py` (con sus TODOs completos) carga el CSV y reporta dtypes, faltantes y distribuciones. Resumen de la corrida sobre las 80 filas:
 
-| Origen | Registros |
-|---|---:|
-| real | 3 |
-| simulada | 1 |
+| Columnas | Dtype al cargar | Faltantes | Explicación |
+|---|---|---:|---|
+| `respuesta_id`, `consentimiento`, filtros, `origen` | texto | 0 | Completas |
+| `fecha`, `encuestador` | texto | 57 | Vacías solo en las simuladas |
+| `edad`, `satisfaccion_general`, `interes_programa` | `float64` | 2 | Las 2 personas que terminaron en el filtro de RetailAndina |
+| `frecuencia_visita`, `recomendaria`, `beneficio_preferido`, `aspecto_mejora` | texto | 2 | Las mismas 2 personas |
+| `comentario` | texto | 79 | Pregunta opcional; solo una persona escribió algo |
 
-Los resultados anteriores únicamente demuestran el funcionamiento de la auditoría sobre datos ilustrativos.
-
-### 7.3. ¿Coinciden los tipos con la predicción de la sección 4?
-
-Sí, los campos compartidos entre el CSV original y el cuestionario propuesto presentan tipos coherentes con las predicciones.
-
-Las columnas `edad` y `satisfaccion_general` se interpretan como `int64`, mientras que las variables categóricas almacenadas mediante etiquetas se interpretan como `object`.
-
-En particular, la satisfacción se registra numéricamente pero sigue siendo una variable ordinal.
-
-Las variables nuevas `interes_programa`, `beneficio_preferido` y `aspecto_mejora` deberán agregarse al CSV cuando se implemente el cuestionario definitivo. Sus tipos y valores se comprobarán después de aplicar la encuesta.
-
-### 7.4. ¿Cuántos datos faltantes hay por columna?
-
-En el CSV original de ejemplo se detecta un único dato faltante en la columna `comentario`. Las demás columnas presentan cero valores faltantes.
-
-El campo `comentario` es opcional, por lo que la ausencia de un valor no constituye necesariamente un error de calidad. Es importante distinguir los datos no obligatorios de los datos requeridos para los indicadores principales.
-
-### 7.5. Interpretación de los posibles sesgos
-
-**Sesgo de selección:**
-
-Una acumulación de participantes en un único grupo de edad o frecuencia de compra podría sugerir una cobertura limitada. Por ejemplo, una muestra compuesta casi exclusivamente por estudiantes universitarios no describiría adecuadamente la diversidad de compradores adultos de Quito.
-
-**Sesgo de no respuesta:**
-
-Para detectar este problema será necesario comparar las invitaciones realizadas con las encuestas válidas recibidas. Si un grupo de invitados responde significativamente menos que otro, podría existir un mecanismo de no respuesta asociado con sus características.
-
-La presencia de celdas vacías también permitirá estudiar la no respuesta a preguntas específicas, pero no reemplaza el registro de las personas que nunca completaron el formulario.
-
-**Sesgo de respuesta:**
-
-Una distribución extremadamente concentrada en los valores más altos de satisfacción o en recomendaciones positivas podría justificar una revisión del instrumento y de las condiciones de aplicación. Esta concentración no demuestra por sí sola que exista sesgo.
-
-**Interpretación de las filas reales del CSV de ejemplo:**
-
-Al excluir la fila simulada, quedan tres registros ilustrativos con puntuaciones 3, 4 y 5, respectivamente. Dos de ellos incluyen recomendaciones afirmativas y uno una recomendación negativa.
-
-El número de registros es demasiado pequeño y corresponde a datos de ejemplo. Por consiguiente, no se presentan conclusiones sobre los consumidores reales ni se atribuyen estos resultados al Equipo 3.
-
-**Conclusión de la verificación:**
-
-La auditoría permite comprobar que el CSV puede leerse correctamente, verificar los tipos de datos, identificar los valores faltantes y examinar las distribuciones solicitadas. La interpretación definitiva dependerá de las respuestas reales recolectadas y de la evaluación del procedimiento de muestreo.
+Los dtypes coinciden con lo previsto en la sección 4, con la diferencia de los `float64` explicada allí. Los faltantes no son errores de captura: responden al diseño del formulario (corte en el filtro y comentario opcional) y a las filas simuladas.
 
 ---
 
-## Conclusiones preliminares del diseño
+## Conclusiones
 
-1. El diseño de la encuesta establece una relación directa entre la satisfacción de los consumidores y las decisiones de la gerencia sobre programas de fidelización. Los indicadores definidos permiten obtener información descriptiva para identificar prioridades comerciales y oportunidades de mejora.
-
-2. La combinación de un cuestionario estructurado, un muestreo declarado de forma transparente, medidas de confidencialidad y verificaciones mediante Python ofrece un procedimiento reproducible para el laboratorio. No obstante, las conclusiones deberán reconocer las limitaciones del muestreo por conveniencia y diferenciar estrictamente las respuestas reales de los registros simulados.
-
-**Estado del trabajo:** Diseño propuesto. Pendientes de ejecución: aprobación del enfoque, aplicación de la encuesta, actualización del CSV y auditoría final con respuestas reales.
+1. La encuesta cerró su ciclo: 23 personas respondieron el formulario y 16 cumplieron todos los filtros, dentro del rango de 15 a 30 respuestas reales. Con ellas, la gerencia tiene una primera lectura: descuentos directos como beneficio más pedido y rapidez en caja como principal aspecto a mejorar.
+2. Los datos muestran los límites del muestreo por conveniencia: todas las respuestas válidas vienen de personas de 19 a 29 años y la recomendación es unánime incluso con satisfacción neutral. Antes de decidir el lanzamiento conviene repetir la encuesta con cuotas por edad o con el sorteo estratificado de la sección 3, y con un formulario que la persona llene sola.
+3. El CSV queda listo para los siguientes análisis: anonimizado, con una columna por pregunta y con las filas simuladas declaradas en `origen`, de modo que cualquier conclusión pueda limitarse a las respuestas reales.
