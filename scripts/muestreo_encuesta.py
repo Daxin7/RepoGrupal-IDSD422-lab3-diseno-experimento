@@ -1,12 +1,4 @@
-# muestreo_encuesta.py — Sección 3: la línea de muestreo, con semilla y una corrida.
-#
-# Marco: data/clientes_400.csv, la base de clientes de RetailAndina usada en el
-# laboratorio de muestreo (sin datos de contacto). Se filtra la población de la
-# encuesta (Quito, 18 años o más) y se sortean 24 personas estratificando por grupo
-# de edad con afijación proporcional; luego se reparten 6 por integrante.
-#
-# Uso (desde la raíz del repositorio):
-#   python scripts/muestreo_encuesta.py
+
 
 import pandas as pd
 
