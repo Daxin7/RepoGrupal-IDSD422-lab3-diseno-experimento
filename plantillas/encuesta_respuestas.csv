@@ -22,3 +22,60 @@ R020,2026-11-09,E2,Sí,Sí,Sí,Sí,No,,,,,,,,,real
 R021,2026-11-09,E1,Sí,Sí,Sí,Sí,Sí,21,Quincenal,4,Sí,3,Productos o recompensas gratuitas,Disponibilidad de productos,,real
 R022,2026-11-09,E1,Sí,Sí,Sí,Sí,No,,,,,,,,,real
 R023,2026-11-09,E1,Sí,Sí,Sí,Sí,Sí,21,Semanal,5,Sí,5,Acumulación de puntos,Ninguno,,real
+R024,,,Sí,Sí,Sí,Sí,Sí,20,Quincenal,4,Sí,2,Promociones personalizadas,Rapidez en caja,,simulada
+R025,,,Sí,Sí,Sí,Sí,Sí,22,Quincenal,3,Sí,4,Productos o recompensas gratuitas,Rapidez en caja,,simulada
+R026,,,Sí,Sí,Sí,Sí,Sí,18,Quincenal,4,Sí,4,Acumulación de puntos,Atención al cliente,,simulada
+R027,,,Sí,Sí,Sí,Sí,Sí,25,Semanal,4,Sí,3,Acumulación de puntos,Precios,,simulada
+R028,,,Sí,Sí,Sí,Sí,Sí,23,Mensual,5,Sí,3,Otro,Disponibilidad de productos,,simulada
+R029,,,Sí,Sí,Sí,Sí,Sí,21,Menos de una vez al mes,3,Sí,3,Acumulación de puntos,Precios,,simulada
+R030,,,Sí,Sí,Sí,Sí,Sí,21,Semanal,3,Sí,4,Productos o recompensas gratuitas,Disponibilidad de productos,,simulada
+R031,,,Sí,Sí,Sí,Sí,Sí,22,Quincenal,3,Sí,3,Acumulación de puntos,Precios,,simulada
+R032,,,Sí,Sí,Sí,Sí,Sí,21,Mensual,3,Sí,3,Descuentos directos,Rapidez en caja,,simulada
+R033,,,Sí,Sí,Sí,Sí,Sí,21,Quincenal,4,No,4,Descuentos directos,Precios,,simulada
+R034,,,Sí,Sí,Sí,Sí,Sí,23,Quincenal,5,Sí,5,Promociones personalizadas,Variedad de productos,,simulada
+R035,,,Sí,Sí,Sí,Sí,Sí,23,Quincenal,4,Sí,5,Productos o recompensas gratuitas,Rapidez en caja,,simulada
+R036,,,Sí,Sí,Sí,Sí,Sí,21,Mensual,4,Sí,3,Productos o recompensas gratuitas,Rapidez en caja,,simulada
+R037,,,Sí,Sí,Sí,Sí,Sí,21,Menos de una vez al mes,5,Sí,2,Acumulación de puntos,Atención al cliente,,simulada
+R038,,,Sí,Sí,Sí,Sí,Sí,22,Mensual,4,Sí,1,Descuentos directos,Rapidez en caja,,simulada
+R039,,,Sí,Sí,Sí,Sí,Sí,20,Quincenal,4,Sí,3,Promociones personalizadas,Variedad de productos,,simulada
+R040,,,Sí,Sí,Sí,Sí,Sí,20,Semanal,5,Sí,2,Descuentos directos,Atención al cliente,,simulada
+R041,,,Sí,Sí,Sí,Sí,Sí,23,Menos de una vez al mes,3,Sí,2,Acumulación de puntos,Disponibilidad de productos,,simulada
+R042,,,Sí,Sí,Sí,Sí,Sí,21,Varias veces por semana,4,Sí,2,Promociones personalizadas,Disponibilidad de productos,,simulada
+R043,,,Sí,Sí,Sí,Sí,Sí,18,Quincenal,4,Sí,5,Acumulación de puntos,Ninguno,,simulada
+R044,,,Sí,Sí,Sí,Sí,Sí,20,Semanal,5,Sí,2,Acumulación de puntos,Rapidez en caja,,simulada
+R045,,,Sí,Sí,Sí,Sí,Sí,23,Mensual,3,Sí,2,Descuentos directos,Limpieza y comodidad,,simulada
+R046,,,Sí,Sí,Sí,Sí,Sí,21,Quincenal,4,Sí,5,Descuentos directos,Precios,,simulada
+R047,,,Sí,Sí,Sí,Sí,Sí,21,Semanal,4,Sí,4,Productos o recompensas gratuitas,Otro,,simulada
+R048,,,Sí,Sí,Sí,Sí,Sí,23,Varias veces por semana,3,Sí,4,Promociones personalizadas,Atención al cliente,,simulada
+R049,,,Sí,Sí,Sí,Sí,Sí,26,Quincenal,3,Sí,3,Productos o recompensas gratuitas,Rapidez en caja,,simulada
+R050,,,Sí,Sí,Sí,Sí,Sí,20,Quincenal,3,Sí,5,Productos o recompensas gratuitas,Precios,,simulada
+R051,,,Sí,Sí,Sí,Sí,Sí,25,Quincenal,5,Sí,5,Descuentos directos,Limpieza y comodidad,,simulada
+R052,,,Sí,Sí,Sí,Sí,Sí,18,Quincenal,3,Sí,4,Acumulación de puntos,Rapidez en caja,,simulada
+R053,,,Sí,Sí,Sí,Sí,Sí,22,Mensual,3,Sí,5,Promociones personalizadas,Otro,,simulada
+R054,,,Sí,Sí,Sí,Sí,Sí,19,Menos de una vez al mes,3,Sí,3,Descuentos directos,Precios,,simulada
+R055,,,Sí,Sí,Sí,Sí,Sí,25,Semanal,3,Sí,3,Descuentos directos,Ninguno,,simulada
+R056,,,Sí,Sí,Sí,Sí,Sí,23,Menos de una vez al mes,3,Sí,4,Productos o recompensas gratuitas,Rapidez en caja,,simulada
+R057,,,Sí,Sí,Sí,Sí,Sí,24,Mensual,5,Sí,4,Productos o recompensas gratuitas,Atención al cliente,,simulada
+R058,,,Sí,Sí,Sí,Sí,Sí,19,Quincenal,3,Sí,2,Acumulación de puntos,Variedad de productos,,simulada
+R059,,,Sí,Sí,Sí,Sí,Sí,23,Quincenal,4,Sí,3,Productos o recompensas gratuitas,Precios,,simulada
+R060,,,Sí,Sí,Sí,Sí,Sí,20,Quincenal,3,Sí,1,Promociones personalizadas,Rapidez en caja,,simulada
+R061,,,Sí,Sí,Sí,Sí,Sí,20,Menos de una vez al mes,4,Sí,4,Productos o recompensas gratuitas,Rapidez en caja,,simulada
+R062,,,Sí,Sí,Sí,Sí,Sí,23,Semanal,3,Sí,4,Descuentos directos,Precios,,simulada
+R063,,,Sí,Sí,Sí,Sí,Sí,24,Quincenal,4,Sí,1,Acumulación de puntos,Rapidez en caja,,simulada
+R064,,,Sí,Sí,Sí,Sí,Sí,22,Mensual,3,Sí,5,Productos o recompensas gratuitas,Rapidez en caja,,simulada
+R065,,,Sí,Sí,Sí,Sí,Sí,20,Semanal,3,Sí,5,Productos o recompensas gratuitas,Atención al cliente,,simulada
+R066,,,Sí,Sí,Sí,Sí,Sí,19,Quincenal,4,Sí,4,Descuentos directos,Ninguno,,simulada
+R067,,,Sí,Sí,Sí,Sí,Sí,25,Quincenal,4,Sí,3,Productos o recompensas gratuitas,Variedad de productos,,simulada
+R068,,,Sí,Sí,Sí,Sí,Sí,23,Mensual,4,Sí,4,Acumulación de puntos,Precios,,simulada
+R069,,,Sí,Sí,Sí,Sí,Sí,23,Semanal,3,Sí,1,Productos o recompensas gratuitas,Disponibilidad de productos,,simulada
+R070,,,Sí,Sí,Sí,Sí,Sí,27,Quincenal,4,Sí,2,Productos o recompensas gratuitas,Rapidez en caja,,simulada
+R071,,,Sí,Sí,Sí,Sí,Sí,19,Mensual,3,Sí,3,Acumulación de puntos,Variedad de productos,,simulada
+R072,,,Sí,Sí,Sí,Sí,Sí,28,Quincenal,1,Sí,3,Productos o recompensas gratuitas,Rapidez en caja,,simulada
+R073,,,Sí,Sí,Sí,Sí,Sí,29,Quincenal,5,Sí,4,Acumulación de puntos,Variedad de productos,,simulada
+R074,,,Sí,Sí,Sí,Sí,Sí,25,Quincenal,1,Sí,2,Ninguno,Disponibilidad de productos,,simulada
+R075,,,Sí,Sí,Sí,Sí,Sí,23,Quincenal,3,Sí,2,Otro,Atención al cliente,,simulada
+R076,,,Sí,Sí,Sí,Sí,Sí,20,Mensual,4,Sí,4,Productos o recompensas gratuitas,Disponibilidad de productos,,simulada
+R077,,,Sí,Sí,Sí,Sí,Sí,24,Semanal,3,No,4,Productos o recompensas gratuitas,Variedad de productos,,simulada
+R078,,,Sí,Sí,Sí,Sí,Sí,20,Semanal,3,Sí,4,Descuentos directos,Variedad de productos,,simulada
+R079,,,Sí,Sí,Sí,Sí,Sí,21,Varias veces por semana,4,Sí,4,Promociones personalizadas,Atención al cliente,,simulada
+R080,,,Sí,Sí,Sí,Sí,Sí,21,Semanal,5,Sí,5,Productos o recompensas gratuitas,Atención al cliente,,simulada
