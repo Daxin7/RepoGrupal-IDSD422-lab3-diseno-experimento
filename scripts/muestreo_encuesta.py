@@ -15,9 +15,12 @@ TAMANO = 24
 
 clientes = pd.read_csv("data/clientes_400.csv")
 marco = clientes[(clientes["ciudad"] == "Quito") & (clientes["edad"] >= 18)].copy()
-marco["grupo_edad"] = pd.cut(marco["edad"], [17, 29, 44, 65], labels=["18-29", "30-44", "45-65"])
+marco["grupo_edad"] = pd.cut(marco["edad"], [17, 29, 44, 65],
+                             labels=["18-29", "30-44", "45-65"])
 
-muestra = marco.groupby("grupo_edad", observed=True).sample(frac=TAMANO / len(marco), random_state=SEMILLA)  # <- línea de muestreo
+# Línea de muestreo: 24 personas, estratificado por edad, semilla 2026
+muestra = marco.groupby("grupo_edad", observed=True).sample(
+    frac=TAMANO / len(marco), random_state=SEMILLA)
 
 # Reparto de la lista sorteada: 6 contactos por integrante (E1 a E4), mezclando grupos de edad.
 muestra = muestra.sample(frac=1, random_state=SEMILLA)

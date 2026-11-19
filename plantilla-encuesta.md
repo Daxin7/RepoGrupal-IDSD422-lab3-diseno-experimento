@@ -132,9 +132,12 @@ import pandas as pd
 
 clientes = pd.read_csv("data/clientes_400.csv")
 marco = clientes[(clientes["ciudad"] == "Quito") & (clientes["edad"] >= 18)].copy()
-marco["grupo_edad"] = pd.cut(marco["edad"], [17, 29, 44, 65], labels=["18-29", "30-44", "45-65"])
+marco["grupo_edad"] = pd.cut(marco["edad"], [17, 29, 44, 65],
+                             labels=["18-29", "30-44", "45-65"])
 
-muestra = marco.groupby("grupo_edad", observed=True).sample(frac=24 / len(marco), random_state=2026)
+# Línea de muestreo: 24 personas, estratificado por edad, semilla 2026
+muestra = marco.groupby("grupo_edad", observed=True).sample(
+    frac=24 / len(marco), random_state=2026)
 ```
 
 El script completo, que además reparte la lista en 6 contactos por integrante, está en `scripts/muestreo_encuesta.py` y se ejecuta desde la raíz con `python scripts/muestreo_encuesta.py`.
