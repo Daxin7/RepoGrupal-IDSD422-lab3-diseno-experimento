@@ -1,11 +1,4 @@
-# exportar_pdf.py — Exporta plantilla-encuesta.md a informes/plantilla-encuesta.pdf.
-#
-# La carátula toma el encabezado de la plantilla (todo lo que está antes de la
-# primera línea "---"), incluido el enlace del fork. Requiere pandoc (viene con
-# Quarto) y Microsoft Edge o Google Chrome para imprimir el HTML a PDF.
-#
-# Uso (desde la raíz del repositorio):
-#   python scripts/exportar_pdf.py
+
 
 import shutil
 import subprocess
