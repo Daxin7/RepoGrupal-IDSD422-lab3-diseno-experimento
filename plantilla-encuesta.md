@@ -251,38 +251,42 @@ Con 16 respuestas de personas jóvenes de la red del equipo, los resultados desc
 
 **Datos personales que se piden y por qué:**
 
-La encuesta solicitará únicamente datos mínimos necesarios para alcanzar sus objetivos.
+La encuesta pide solo lo necesario para cumplir el objetivo:
 
-- **Edad:** permitirá identificar el perfil etario de los participantes y comprobar el criterio de inclusión.
-- **Ciudad de residencia:** permitirá verificar que el participante pertenece a la población definida.
-- **Respuestas de consumo:** permitirán analizar frecuencia de compra, satisfacción, recomendación e interés en programas de fidelización.
+- **Edad:** para confirmar que la persona es mayor de edad y describir el perfil de la muestra.
+- **Filtros de residencia, compra reciente y cliente habitual:** para confirmar que la persona pertenece a la población.
+- **Opiniones de compra:** frecuencia, satisfacción, recomendación, interés, beneficio preferido y aspecto de mejora, que son el contenido de la encuesta.
 
-No se solicitarán nombres, cédulas de identidad, números telefónicos, correos electrónicos, direcciones domiciliarias ni información financiera.
-
-**Plan de anonimización:**
-
-1. Asignar un identificador de respuesta, como R001, R002 o R003, sin vincularlo a datos identificativos.
-2. Configurar el formulario para que no recopile direcciones de correo electrónico automáticamente.
-3. Evitar solicitar nombres y otros identificadores directos.
-4. Revisar los comentarios abiertos y eliminar referencias que permitan reconocer a una persona.
-5. Guardar las respuestas en archivos CSV con las variables estrictamente necesarias.
-6. Mantener cualquier archivo original que contenga información identificable fuera del repositorio público.
-7. Publicar exclusivamente datos anonimizados y revisados.
-8. Limitar el acceso a los archivos de trabajo a los integrantes autorizados del equipo.
+No se pidieron nombres, cédulas, teléfonos, correos, direcciones ni datos económicos, y el formulario no recolectó correos (el export no trae esa columna).
 
 **Consentimiento informado:**
 
-Antes de iniciar la encuesta, se mostrará el siguiente texto:
+El formulario abre con un texto basado en la Ley Orgánica de Protección de Datos Personales (LOPDP). Explica que el tratamiento se apoya en la voluntad expresa del participante (art. 7, num. 1) y en un consentimiento libre, específico, informado e inequívoco (art. 8); que se respetan los principios de transparencia, finalidad, minimización de datos y confidencialidad (art. 10) y el derecho a una información clara (art. 12); que las respuestas se usan solo con fines estadísticos y académicos y se anonimizan (art. 4); y que la persona puede revocar su autorización y ejercer sus derechos de acceso, rectificación, eliminación, oposición, portabilidad y suspensión (arts. 13 a 20). Las 23 personas que respondieron aceptaron.
 
-> Esta encuesta se realiza con fines académicos para conocer la satisfacción y las expectativas de compradores de supermercados en Quito. Su participación es voluntaria y puede decidir no responder. No se solicitará información que permita identificarle directamente. Las respuestas serán analizadas de forma agrupada y podrán incorporarse de manera anonimizada al informe académico.
+**Plan de anonimización (aplicado):**
 
-El consentimiento se solicitará antes de mostrar el cuestionario principal.
+| Dato del export crudo | Qué se hizo antes de compartir | Por qué |
+|---|---|---|
+| Marca temporal con fecha y hora | Se conserva solo la fecha, en formato AAAA-MM-DD | La hora exacta, cruzada con quién hizo el contacto, puede delatar a una persona |
+| Nombre del integrante que registró | Se reemplaza por un código (E1 a E4) | El CSV queda sin nombres; el código basta para controlar la cuota |
+| Texto completo del consentimiento | Se reduce a "Sí" | Es la misma información, sin texto repetido |
+| Cada persona | Identificador R001 a R023 según el orden de llegada | El código no se puede ligar a una identidad |
+| Escalas con etiqueta ("4 = Satisfecho") | Solo el número | Es una codificación; no cambia el contenido |
+| Comentarios abiertos | Revisión manual antes de publicar | Solo hubo uno ("sin comentarios") y no contiene datos personales |
+
+**Cómo se aplica:**
+
+`scripts/anonimizar_respuestas.py` lee el export crudo desde una ruta fuera del repositorio y escribe `plantillas/encuesta_respuestas.csv`. Así el proceso queda documentado y se puede repetir sin editar los datos a mano.
 
 **Almacenamiento y publicación:**
 
-Las respuestas sin anonimizar, si llegaran a existir, se almacenarán únicamente en un espacio privado con acceso restringido. Los archivos publicados en GitHub no deberán contener información que permita identificar directa o indirectamente a los participantes.
+- El export crudo se conserva fuera del repositorio, con acceso solo para los integrantes. El `.gitignore` bloquea los nombres típicos de ese archivo (`datos_crudos/`, `*crudo*.csv`, `Encuesta de satisfacción*.csv`) para evitar subirlo por error.
+- En GitHub solo se publica el CSV anonimizado.
+- Las filas simuladas llevan `origen = simulada`, para que nadie las confunda con personas reales.
 
-Los datos simulados se identificarán de forma explícita mediante la columna `origen`, mientras que los reales se registrarán con `origen = real`.
+**Riesgo que queda:**
+
+Con 23 personas de una red conocida, la combinación de edad, fecha e integrante podría permitir que alguien cercano adivine quién respondió. Por eso los resultados se presentan siempre agregados y no se publican cruces de respuestas por integrante y fecha.
 
 ## 7. Verificación con herramientas (Python/R)
 
