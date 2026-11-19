@@ -19,31 +19,35 @@
 
 ## 1. Objetivo de la encuesta
 
-**Objetivo general:**
+**Objetivo (frase medible):**
 
-Medir el nivel de satisfacción general de al menos 20 consumidores adultos que realizan compras en supermercados de Quito, así como su disposición a recomendar el establecimiento, su interés en participar en un programa de fidelización y los beneficios que consideran más atractivos, mediante una encuesta estructurada, con la finalidad de apoyar a la gerencia de RetailAndina S.A. en el diseño inicial de su programa de fidelización.
+Medir, en una muestra de 15 a 30 clientes habituales adultos de RetailAndina en Quito, qué porcentaje está satisfecho con la cadena (4 o 5 en una escala de 1 a 5), qué porcentaje la recomendaría, qué porcentaje está interesado en un programa de fidelización (4 o 5) y cuál es el beneficio que más prefiere, para que la gerencia decida con qué beneficio lanzar el programa.
+
+**Decisión de gerencia que apoya:**
+
+RetailAndina va a lanzar un programa de fidelización y tiene que definir con qué beneficio arrancar (descuentos, puntos, promociones personalizadas o recompensas) y qué tan atractivo resulta el programa para sus clientes actuales. La encuesta también señala qué aspecto de la tienda conviene corregir, porque un programa de fidelización rinde menos si la experiencia de compra tiene fallas básicas.
 
 **Objetivos específicos:**
 
-1. Determinar la distribución de los niveles de satisfacción de los consumidores mediante una escala ordinal de 1 a 5.
-2. Identificar la proporción de encuestados que recomendarían su supermercado habitual.
-3. Determinar el interés de los consumidores en participar en un programa de fidelización.
-4. Identificar el beneficio más valorado por los participantes, entre descuentos, acumulación de puntos, promociones personalizadas, recompensas y otros beneficios.
-5. Explorar la relación descriptiva entre la frecuencia de compra, la satisfacción general y la disposición a recomendar el establecimiento.
+1. Describir cómo se reparten los niveles de satisfacción con RetailAndina en la escala de 1 a 5.
+2. Calcular la proporción de clientes que recomendaría RetailAndina a otra persona.
+3. Medir el interés en participar en un programa de fidelización de RetailAndina.
+4. Identificar el beneficio preferido entre descuentos directos, acumulación de puntos, promociones personalizadas y productos o recompensas gratuitas.
+5. Identificar el aspecto que los clientes consideran más urgente de mejorar.
+6. Revisar, de forma descriptiva, si la satisfacción y la recomendación cambian según la frecuencia de compra.
 
-**Decisión gerencial que apoyará la encuesta:**
+**Indicadores:**
 
-La gerencia podrá utilizar los resultados para priorizar los beneficios que debería ofrecer un programa de fidelización y detectar oportunidades de mejora en la experiencia general del consumidor.
+| Indicador | Cómo se calcula | Pregunta |
+|---|---|---|
+| Satisfacción favorable | % de respuestas 4 o 5 en satisfacción | P3 |
+| Satisfacción promedio | promedio de la escala 1–5, solo como resumen descriptivo | P3 |
+| Recomendación | % de respuestas "Sí" | P4 |
+| Interés en el programa | % de respuestas 4 o 5 en interés | P5 |
+| Beneficio preferido | opción más elegida y su porcentaje | P6 |
+| Prioridad de mejora | aspecto más elegido y su porcentaje | P7 |
 
-**Indicadores propuestos:**
-
-- **Satisfacción promedio:** suma de puntuaciones de satisfacción dividida entre el número de respuestas válidas, utilizada como resumen descriptivo de una escala ordinal.
-- **Porcentaje de satisfacción favorable:** proporción de participantes que seleccionen 4 o 5 en la escala de satisfacción.
-- **Porcentaje de recomendación:** proporción de participantes que respondan "Si" a la pregunta sobre recomendación.
-- **Porcentaje de interés:** proporción de participantes que manifiesten interés en un programa de fidelización.
-- **Beneficio preferido:** categoría con mayor frecuencia absoluta y relativa entre los beneficios propuestos.
-
-Estos indicadores serán descriptivos y exploratorios. Debido al método de muestreo y al tamaño reducido de la muestra, sus resultados no se interpretarán como estimaciones representativas de todos los consumidores de Quito.
+Todos los indicadores se calculan solo con las respuestas reales válidas (`origen = real` y las cuatro preguntas filtro en "Sí"). Como la muestra es pequeña y por conveniencia, los resultados sirven para orientar la decisión, no para afirmar cómo piensan todos los clientes de RetailAndina en Quito.
 
 ## 2. Población objetivo
 
