@@ -164,71 +164,70 @@ El sorteo respeta el peso de cada grupo de edad: 25 % de 18 a 29 años, 50 % de 
 
 ## 4. Cuestionario (5–10 preguntas)
 
-**Instrucciones para el encuestado:**
+Esta sección reproduce el cuestionario tal como se aplicó en el formulario, con las mismas preguntas y opciones que llegan al CSV.
 
-Esta encuesta forma parte de una actividad académica de la Escuela Politécnica Nacional y busca conocer la satisfacción y las expectativas de consumidores de supermercados de Quito. La participación es voluntaria, anónima y con fines exclusivamente académicos.
+**Inicio del formulario:**
 
-Para las preguntas relacionadas con la experiencia de compra, considere el supermercado en el que compra con mayor frecuencia.
+- **Consentimiento:** un texto basado en la Ley Orgánica de Protección de Datos Personales (sección 6), con la opción "Sí (Autorizo el tratamiento de datos personales y acepto participar voluntariamente)".
+- **Integrante responsable:** "Seleccione el evaluador responsable del registro". Lo marca el integrante que hizo el contacto; no es una pregunta para el participante y en el CSV se guarda codificado (E1 a E4).
 
-**Preguntas de elegibilidad previas:**
+**Preguntas filtro (Sí / No):**
 
-- ¿Tiene 18 años o más? Si / No.
-- ¿Reside en Quito? Si / No.
-- ¿Ha realizado al menos una compra en un supermercado durante los últimos 30 días? Si / No.
+| Filtro | Columna en el CSV |
+|---|---|
+| ¿Tiene 18 años o más? | `mayor_18` |
+| ¿Reside en Quito? | `reside_quito` |
+| ¿Ha realizado al menos una compra en un supermercado durante los últimos 30 días? | `compra_30_dias` |
+| ¿Realiza sus compras habituales en RetailAndina? | `cliente_retailandina` |
 
-Estas preguntas se utilizan como filtro de inclusión y no forman parte de las ocho preguntas principales.
+Los filtros comprueban que la persona pertenece a la población (sección 2) y no cuentan entre las ocho preguntas del cuestionario. Si la persona responde "No" a la última, el formulario termina.
 
 ### Cuestionario principal
 
-| # | Pregunta | Tipo de variable | Dtype al cargar | Opciones / escala |
-|---|---|---|---|---|
-| 1 | ¿Cuál es su edad en años cumplidos? | Numérica discreta | `int64` | Entero igual o mayor que 18 |
-| 2 | ¿Con qué frecuencia realiza compras en el supermercado que visita habitualmente? | Categórica ordinal | `object` | Varias veces por semana; Semanal; Quincenal; Mensual; Menos de una vez al mes |
-| 3 | En general, ¿qué tan satisfecho está con el supermercado donde compra habitualmente? | Categórica ordinal | `int64` | 1 = Muy insatisfecho; 2 = Insatisfecho; 3 = Ni satisfecho ni insatisfecho; 4 = Satisfecho; 5 = Muy satisfecho |
-| 4 | ¿Recomendaría a otra persona el supermercado donde compra habitualmente? | Categórica binaria | `object` | Si; No |
-| 5 | ¿Qué tanto le interesaría participar en un programa de fidelización de un supermercado? | Categórica ordinal | `int64` | 1 = Nada interesado; 2 = Poco interesado; 3 = Ni interesado ni desinteresado; 4 = Interesado; 5 = Muy interesado |
-| 6 | ¿Cuál de los siguientes beneficios preferiría recibir mediante un programa de fidelización? | Categórica nominal | `object` | Descuentos directos; Acumulación de puntos; Promociones personalizadas; Productos o recompensas gratuitas; Otro; Ninguno |
-| 7 | ¿Cuál es el principal aspecto que considera que debería mejorar el supermercado donde compra habitualmente? | Categórica nominal | `object` | Precios; Atención al cliente; Rapidez en caja; Variedad de productos; Disponibilidad de productos; Limpieza y comodidad; Ninguno; Otro |
-| 8 | ¿Desea agregar algún comentario o sugerencia sobre su experiencia de compra? | Categórica nominal (texto libre) | `object` | Respuesta abierta y opcional |
+| # | Pregunta (texto aplicado) | Opciones | Tipo de variable | Dtype esperado | Columna |
+|---|---|---|---|---|---|
+| P1 | ¿Cuál es su edad en años cumplidos? | Número entero, 18 o más | Numérica discreta | `int64` | `edad` |
+| P2 | ¿Con qué frecuencia realiza compras en RetailAndina? | Varias veces por semana; Semanal; Quincenal; Mensual; Menos de una vez al mes | Categórica ordinal | `object` | `frecuencia_visita` |
+| P3 | En general, ¿qué tan satisfecho está con RetailAndina? | 1 = Muy insatisfecho; 2 = Insatisfecho; 3 = Ni satisfecho ni insatisfecho; 4 = Satisfecho; 5 = Muy satisfecho | Categórica ordinal | `int64` | `satisfaccion_general` |
+| P4 | ¿Recomendaría RetailAndina a otra persona? | Sí; No | Categórica binaria | `object` | `recomendaria` |
+| P5 | ¿Qué tanto le interesaría participar en un programa de fidelización de RetailAndina? | 1 = Nada interesado; 2 = Poco interesado; 3 = Ni interesado ni desinteresado; 4 = Interesado; 5 = Muy interesado | Categórica ordinal | `int64` | `interes_programa` |
+| P6 | ¿Cuál de estos beneficios preferiría recibir de RetailAndina mediante un programa de fidelización? | Descuentos directos; Acumulación de puntos; Promociones personalizadas; Productos o recompensas gratuitas; Otro; Ninguno | Categórica nominal | `object` | `beneficio_preferido` |
+| P7 | ¿Cuál es el principal aspecto que debería mejorar RetailAndina? | Precios; Atención al cliente; Rapidez en caja; Variedad de productos; Disponibilidad de productos; Limpieza y comodidad; Ninguno; Otro | Categórica nominal | `object` | `aspecto_mejora` |
+| P8 | ¿Desea agregar algún comentario o sugerencia sobre su experiencia de compra en RetailAndina? | Respuesta abierta y opcional | Texto libre (cualitativa) | `object` | `comentario` |
 
-**Nota sobre los tipos de variables:**
+**Por qué las preguntas cumplen las reglas:**
 
-La clasificación conceptual no depende únicamente del tipo de dato que detecta pandas. Por ejemplo, `satisfaccion_general` se almacena como un entero, pero representa una variable categórica ordinal, porque sus valores expresan categorías ordenadas y no magnitudes físicas continuas.
+- **Neutras:** ninguna empuja hacia una respuesta. Se pregunta "¿qué tan satisfecho está?" y no "¿qué tan buena le parece la tienda?", y las escalas tienen un punto medio y extremos equilibrados.
+- **Específicas:** cada pregunta nombra a RetailAndina y un solo tema.
+- **Una idea por pregunta:** ninguna mezcla dos temas; por ejemplo, precio y atención son opciones distintas dentro de P7, no una pregunta doble.
+- **Opciones completas y sin cruces:** P6 y P7 incluyen "Otro" y "Ninguno" para que nadie se quede sin una opción que lo represente.
 
-En el caso de `edad`, se registra en años cumplidos, por lo que se trata operativamente como numérica discreta.
+**Notas sobre el dtype:**
 
-El comentario abierto es información cualitativa no estructurada. Aunque puede almacenarse como `object`, no debe interpretarse automáticamente como una variable cuantitativa ni como una escala ordinal.
+- El dtype es una pista, no la clasificación. `satisfaccion_general` e `interes_programa` llegan como números, pero son ordinales: un 4 no vale el doble que un 2. Su promedio se usa solo como resumen descriptivo.
+- En el CSV completo, `edad`, `satisfaccion_general` e `interes_programa` se cargan como `float64` y no como `int64`, porque las dos personas que no compran en RetailAndina dejaron esas celdas vacías y pandas representa el vacío con `NaN`. El entero se recupera al leer con `dtype={"edad": "Int64"}` (lo mismo para las dos escalas).
+- Las columnas de texto aparecen como `object` en pandas 2 (la versión de Colab) y como `str` en pandas 3; en ambos casos se trata de texto.
 
-### Nombres de las columnas
+**Cambios respecto del borrador (20/10):**
 
-Para almacenar las respuestas en el CSV se propone el siguiente esquema:
+| Borrador | Formulario aplicado | Motivo |
+|---|---|---|
+| Preguntas sobre "el supermercado donde compra habitualmente" | Preguntas sobre RetailAndina | El objetivo es evaluar a RetailAndina y su programa |
+| Tres preguntas filtro | Cuatro, con "¿Realiza sus compras habituales en RetailAndina?" | Asegurar que quien responde pueda calificar a RetailAndina |
+| Opción "Si" | Opción "Sí" | Es la grafía del formulario; el CSV usa una sola |
+| Sin registro del integrante | Campo del integrante responsable | Controlar la cuota de 6 por integrante |
 
-| Columna | Descripción |
-|---|---|
-| `respuesta_id` | Identificador anónimo, por ejemplo R001 |
-| `fecha` | Fecha de aplicación en formato ISO `YYYY-MM-DD` |
-| `ciudad` | Quito, ciudad de residencia verificada mediante pregunta filtro |
-| `edad` | Edad del participante |
-| `frecuencia_visita` | Frecuencia de compra |
-| `satisfaccion_general` | Nivel de satisfacción (1–5) |
-| `recomendaria` | Si / No |
-| `interes_programa` | Nivel de interés (1–5) |
-| `beneficio_preferido` | Beneficio seleccionado |
-| `aspecto_mejora` | Aspecto prioritario de mejora |
-| `comentario` | Comentario opcional |
-| `origen` | real / simulada |
+**Reglas de registro en el CSV:**
 
-Las columnas `respuesta_id`, `fecha`, `ciudad` y `origen` son metadatos del registro o filtros de elegibilidad, no preguntas adicionales del cuestionario principal.
+- Una fila por persona y una columna por pregunta, con las opciones escritas exactamente como en el formulario.
+- Las escalas de P3 y P5 se guardan como el número (1 a 5), sin la etiqueta.
+- Sin nombres, cédulas, teléfonos, correos ni direcciones.
+- Celda vacía cuando la persona no respondió o el formulario terminó en el filtro.
+- Columna `origen` con `real` o `simulada` en todas las filas.
 
-### Reglas para registrar las respuestas
+**Ajuste detectado al aplicar la encuesta:**
 
-- Utilizar exactamente las categorías especificadas.
-- No utilizar distintas grafías para la misma opción, como `Sí`, `si` y `SI`.
-- Guardar un registro por participante.
-- No registrar nombres, cédulas, direcciones o números telefónicos.
-- Mantener vacía la celda `comentario` cuando el participante no desee responder.
-- Diferenciar estrictamente las observaciones reales de las simuladas.
-- Validar que `edad >= 18` y que las puntuaciones ordinales estén comprendidas entre 1 y 5.
+Tres personas respondieron "No" a "¿Tiene 18 años o más?" y después anotaron 18, 19 y 27 años. Lo más probable es un error al marcar, pero no se puede confirmar, así que esas respuestas se excluyen del análisis. En una próxima aplicación conviene que cada filtro corte el formulario y que la pregunta de edad solo acepte números desde 18.
 
 ## 5. Análisis de sesgos
 
