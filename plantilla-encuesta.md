@@ -34,7 +34,7 @@ RetailAndina va a lanzar un programa de fidelización y tiene que definir con qu
 3. Medir el interés en participar en un programa de fidelización de RetailAndina.
 4. Identificar el beneficio preferido entre descuentos directos, acumulación de puntos, promociones personalizadas y productos o recompensas gratuitas.
 5. Identificar el aspecto que los clientes consideran más urgente de mejorar.
-6. Revisar, de forma descriptiva, si la satisfacción y la recomendación cambian según la frecuencia de compra.
+6. Revisar, de forma descriptiva, si la satisfacción y el interés en el programa cambian según la frecuencia de compra.
 
 **Indicadores:**
 
@@ -59,11 +59,11 @@ Personas de 18 años o más que viven en el Distrito Metropolitano de Quito, que
 
 | Límite | Quién entra | Por qué |
 |---|---|---|
-| Región | Residentes del Distrito Metropolitano de Quito | Es la ciudad donde vive todo el equipo, así que la recolección es alcanzable; además evita mezclar ciudades con precios, competencia y tiendas distintas. |
+| Región | Residentes del Distrito Metropolitano de Quito | Es la ciudad donde estudia el equipo y donde está su red de contactos, así que la recolección es alcanzable; además evita mezclar ciudades con precios, competencia y tiendas distintas. |
 | Edad | 18 años o más | Son personas que deciden y pagan sus compras, y que pueden dar su consentimiento sin intervención de un representante. |
 | Compra reciente | Al menos una compra en un supermercado en los últimos 30 días | Asegura que la persona califique su experiencia con un recuerdo fresco y no con una impresión antigua. |
 | Cliente de RetailAndina | Hace sus compras habituales en RetailAndina | Las preguntas son sobre RetailAndina y su programa; quien no compra ahí no puede calificar la tienda. Este límite se agregó al pasar del borrador al formulario final. |
-| Participación | Voluntaria, con consentimiento informado | La encuesta solo continúa si la persona acepta el tratamiento de sus datos. |
+| Participación | Voluntaria, con consentimiento informado | Solo se usan las respuestas de quienes aceptan el tratamiento de sus datos. |
 
 **Cómo se verifica:** el formulario abre con el consentimiento y cuatro preguntas filtro (sección 4). Si la persona no compra habitualmente en RetailAndina, el formulario termina ahí. Los otros tres filtros no cortaban el formulario, así que se aplican al limpiar los datos: solo cuentan como válidas las respuestas con los cuatro filtros en "Sí".
 
@@ -169,7 +169,7 @@ Esta sección reproduce el cuestionario tal como se aplicó en el formulario, co
 **Inicio del formulario:**
 
 - **Consentimiento:** un texto basado en la Ley Orgánica de Protección de Datos Personales (sección 6), con la opción "Sí (Autorizo el tratamiento de datos personales y acepto participar voluntariamente)".
-- **Integrante responsable:** "Seleccione el evaluador responsable del registro". Lo marca el integrante que hizo el contacto; no es una pregunta para el participante y en el CSV se guarda codificado (E1 a E4).
+- **Integrante responsable:** "Seleccione el evaluador responsable del registro". Identifica al integrante que hizo el contacto; no es una pregunta sobre el participante y en el CSV se guarda codificado (E1 a E4).
 
 **Preguntas filtro (Sí / No):**
 
