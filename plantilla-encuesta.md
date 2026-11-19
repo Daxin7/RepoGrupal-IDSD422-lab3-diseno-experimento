@@ -10,9 +10,10 @@
 - David Jácome
 - Deysi Guachamin
 
-**Fecha:** 26/10/2026  
-**Repositorio (fork):** https://github.com/Daxin7/IDSD422-lab2-diseno-encuesta  
-**Enfoque del equipo (propuesto, pendiente de aprobación):** Satisfacción general y beneficios esperados de un programa de fidelización en compradores adultos de Quito.
+**Entrega:** Hito 1 final, con datos · 19/11/2026  
+**Repositorio (fork):** https://github.com/Daxin7/RepoGrupal-IDSD422-lab3-diseno-experimento  
+**Enfoque del equipo:** Programa de fidelización: satisfacción y beneficios valorados por clientes habituales adultos de RetailAndina en Quito.  
+**Datos:** encuesta aplicada del 5 al 9 de noviembre de 2026 · `plantillas/encuesta_respuestas.csv`
 
 ---
 
