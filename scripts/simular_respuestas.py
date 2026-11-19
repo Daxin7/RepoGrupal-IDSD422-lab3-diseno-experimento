@@ -1,20 +1,4 @@
-# simular_respuestas.py — Relleno simulado del CSV de la encuesta (declarado en el informe).
-#
-# Completa plantillas/encuesta_respuestas.csv hasta TOTAL_FILAS con respuestas
-# generadas por código y marcadas con origen = simulada. Las filas reales no se tocan.
-#
-# Cómo se simula:
-#   - Base: solo las respuestas reales válidas (las cuatro preguntas filtro en "Sí").
-#   - Cada pregunta cerrada se sortea con las frecuencias reales más 1 "voto" extra
-#     por opción, para que también aparezcan opciones que nadie eligió.
-#   - La edad se sortea de una normal con la media y la desviación de las edades
-#     reales, redondeada y con mínimo 18 (hereda el perfil joven de la muestra real).
-#   - Cada pregunta se sortea por separado: las simuladas NO reproducen la relación
-#     entre preguntas y no sirven para sacar conclusiones ni para analizar sesgos.
-#   - Fecha, integrante y comentario quedan vacíos: no hubo aplicación real.
-#
-# Uso (desde la raíz, después de anonimizar_respuestas.py):
-#   python scripts/simular_respuestas.py
+#Relleno simulado del CSV de la encuesta
 
 from pathlib import Path
 
