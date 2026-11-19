@@ -1,6 +1,4 @@
-# verificacion_encuesta.py — Auditoría de la encuesta (Python)
-# Ejecuta desde la raíz del repositorio:
-#   python scripts/verificacion_encuesta.py
+
 
 import pandas as pd
 
