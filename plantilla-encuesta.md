@@ -92,81 +92,75 @@ El equipo no tiene acceso a una lista de todos los clientes de RetailAndina con 
 
 ## 3. Método de muestreo
 
-**Método:**
+**Método aplicado en campo:**
 
-Muestreo no probabilístico por conveniencia, complementado con referencias de participantes y una selección aleatoria reproducible únicamente cuando exista un listado de candidatos elegibles.
+Muestreo no probabilístico por conveniencia con referidos y cuota por integrante: cada uno de los cuatro integrantes invitó a personas de su red que cumplían los filtros, con una meta de 6 respuestas por persona.
 
-**Justificación:**
+**Por qué este método:**
 
-Se selecciona este método debido a que el equipo no dispone de un marco muestral completo de consumidores de supermercados de Quito, ni del presupuesto y tiempo necesarios para implementar un muestreo probabilístico de toda la población.
+- No hay una lista de clientes de RetailAndina con datos de contacto a la que el equipo pueda acceder, así que un sorteo sobre toda la población no era posible.
+- La recolección se hizo en pocos días (semana del feriado de noviembre) y sin presupuesto; la red de contactos era la vía realista para conseguir entre 15 y 30 respuestas.
+- La cuota por integrante evita que un solo círculo de contactos domine la muestra.
+- El costo de esta elección es claro: las personas no tienen una probabilidad conocida de ser elegidas, así que los resultados no se generalizan a todos los clientes de Quito. Se usan como una primera lectura para la gerencia.
 
-La selección por conveniencia permite contactar participantes elegibles mediante redes personales, familiares, compañeros y otros contactos disponibles, utilizando formularios digitales o encuestas presenciales.
+**Tamaño:**
 
-Sin embargo, se reconoce que este procedimiento no garantiza que todos los integrantes de la población tengan una probabilidad conocida y distinta de cero de ser seleccionados. Por lo tanto, no corresponde generalizar estadísticamente los resultados al conjunto de consumidores de Quito.
+La meta fue de 24 respuestas reales (6 por integrante), dentro del rango de 15 a 30 que pide la guía. Se recibieron 23 formularios y 16 cumplieron todos los filtros:
 
-**Tamaño y justificación:**
+| Integrante | Formularios recibidos | Respuestas válidas |
+|---|---:|---:|
+| Deysi Guachamin | 6 | 5 |
+| David Jácome | 6 | 5 |
+| Jhon Solorzano | 6 | 3 |
+| Said Bravo | 5 | 3 |
+| **Total** | **23** | **16** |
 
-Se establece una meta de **24 respuestas reales**, distribuidas equitativamente entre los cuatro integrantes del equipo:
+**Forma de selección en campo:**
 
-| Integrante | Respuestas reales previstas |
-|---|---:|
-| Jhon Solorzano | 6 |
-| Said Bravo | 6 |
-| David Jácome | 6 |
-| Deysi Guachamin | 6 |
-| **Total** | **24** |
-
-Este tamaño se encuentra dentro del intervalo de 15 a 30 respuestas reales establecido para el laboratorio.
-
-La muestra permite obtener un análisis descriptivo inicial, evaluar el funcionamiento del cuestionario y practicar procedimientos de limpieza y verificación de datos. No se considera suficiente para garantizar representatividad estadística.
-
-En caso de incorporar respuestas simuladas para prácticas posteriores de programación, estas se identificarán explícitamente con `origen = simulada`, sin mezclarlas con las observaciones reales durante el análisis de resultados.
-
-**Cómo se seleccionarán los participantes:**
-
-1. Cada integrante elaborará una lista de posibles participantes adultos residentes en Quito.
-2. Se comprobará que hayan comprado en un supermercado durante los últimos 30 días.
-3. Se invitará a participar a personas con diferentes edades y frecuencias de compra, evitando depender exclusivamente de un mismo grupo de compañeros.
-4. Se explicará el propósito académico de la investigación, el carácter voluntario de la participación y la política de confidencialidad.
-5. Se aplicará una sola encuesta por participante.
-6. Se registrará la cantidad de invitaciones realizadas, formularios completados y personas que no respondieron o rechazaron participar.
-7. Se incorporarán únicamente los registros válidos al conjunto de datos de análisis.
+1. Cada integrante armó una lista de posibles participantes de su red: familiares, amigos, compañeros y personas referidas por ellos.
+2. La idea era cubrir distintas edades y frecuencias de compra; en la práctica, la red terminó concentrada en personas jóvenes (sección 5).
+3. A cada persona se le compartió el formulario, con una explicación del propósito académico y del carácter voluntario de la encuesta.
+4. El formulario verificó los filtros de entrada y registró qué integrante hizo el contacto.
+5. Cada persona respondió una sola vez; después se apartaron los registros que no cumplían los filtros.
 
 **Equivalente en código (Python):**
 
-El siguiente procedimiento permite seleccionar de manera reproducible hasta 24 candidatos de un archivo `clientes.csv`, suponiendo que este contiene las columnas `ciudad`, `edad` y `compra_ultimos_30_dias`.
+Como no existía una lista de clientes con contactos, el sorteo no se pudo aplicar en campo. La línea de código muestra cómo se elegiría a las personas si RetailAndina entregara su base de clientes, y sirve de referencia para ver qué tan lejos quedó la muestra por conveniencia. Para probarla se usa `data/clientes_400.csv`, la base de clientes de RetailAndina del laboratorio de muestreo (no tiene datos de contacto): se filtra la población (Quito, 18 años o más) y se sortean 24 personas por grupo de edad, respetando el peso que tiene cada grupo en la base (muestreo estratificado proporcional). Se estratifica por edad porque es la variable en la que la muestra por conveniencia quedó más desbalanceada.
 
 ```python
 import pandas as pd
 
-clientes = pd.read_csv("clientes.csv")
+clientes = pd.read_csv("data/clientes_400.csv")
+marco = clientes[(clientes["ciudad"] == "Quito") & (clientes["edad"] >= 18)].copy()
+marco["grupo_edad"] = pd.cut(marco["edad"], [17, 29, 44, 65], labels=["18-29", "30-44", "45-65"])
 
-elegibles = clientes.loc[
-    clientes["ciudad"].eq("Quito")
-    & clientes["edad"].ge(18)
-    & clientes["compra_ultimos_30_dias"].eq("Si")
-]
-
-muestra = elegibles.sample(
-    n=min(24, len(elegibles)),
-    random_state=42
-)
-
-print(muestra)
-print("Candidatos seleccionados:", len(muestra))
+muestra = marco.groupby("grupo_edad", observed=True).sample(frac=24 / len(marco), random_state=2026)
 ```
 
-**Justificación del código:**
+El script completo, que además reparte la lista en 6 contactos por integrante, está en `scripts/muestreo_encuesta.py` y se ejecuta desde la raíz con `python scripts/muestreo_encuesta.py`.
 
-La función `sample()` realiza una selección pseudoaleatoria dentro del listado disponible. El parámetro `random_state=42` permite reproducir el resultado cuando los datos de entrada permanecen iguales.
+**Corrida (semilla 2026):**
 
-Sin embargo, esta aleatorización no transforma el diseño completo en un muestreo aleatorio simple de toda la población. Como el archivo inicial puede contener únicamente contactos accesibles, el procedimiento sigue limitado por el sesgo de cobertura del marco de selección.
+```text
+Marco (Quito, 18+): 200 clientes · muestra: 24 · semilla: 2026
+  E1: C065, C009, C066, C030, C175, C115
+  E2: C097, C053, C108, C033, C110, C099
+  E3: C146, C116, C047, C190, C165, C130
+  E4: C067, C016, C076, C189, C056, C074
 
-La selección aleatoria simple sería preferible para realizar inferencias sobre toda la población si existiera un marco muestral completo y actualizado. En este laboratorio se declara de forma transparente la conveniencia como método principal, puesto que es viable y coherente con los recursos disponibles.
+Composición por grupo de edad:
+            marco_n  muestra_n  marco_%  muestra_%
+grupo_edad
+18-29            49          6     24.5       25.0
+30-44           100         12     50.0       50.0
+45-65            51          6     25.5       25.0
 
-**Resultado de la ejecución:**
+Edad en la muestra: mínimo 18, máximo 53, media 36.9
+```
 
-Pendiente de generar a partir de una lista real de candidatos elegibles. No se reportan participantes seleccionados ni respuestas recolectadas antes de realizar el procedimiento.
+**Lectura de la corrida:**
+
+El sorteo respeta el peso de cada grupo de edad: 25 % de 18 a 29 años, 50 % de 30 a 44 y 25 % de 45 a 65, prácticamente igual que la base. La muestra real por conveniencia, en cambio, quedó entera en el grupo de 18 a 29 años. Con la misma semilla la lista sale siempre igual; con otra semilla cambian las personas, pero no la proporción por grupo. Como referencia, un sorteo simple con la misma semilla (`marco.sample(n=24, random_state=2026)`) dejó fuera a todo el grupo de 18 a 29 años: estratificar evita que el azar deje un grupo sin representación.
 
 ## 4. Cuestionario (5–10 preguntas)
 
