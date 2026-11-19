@@ -3,3 +3,8 @@
 
 # Datos recolectados (no subir respuestas reales sin anonimizar)
 plantillas/respuestas_reales*.csv
+
+# Export crudo del formulario (con nombres y horas): se guarda fuera del repositorio
+datos_crudos/
+*crudo*.csv
+Encuesta de satisfacción*.csv

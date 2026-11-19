@@ -1,5 +1,24 @@
-respuesta_id,fecha,ciudad,edad,genero,frecuencia_visita,satisfaccion_general,recomendaria,comentario,origen
-R001,2026-11-01,Quito,28,Femenino,semanal,4,Si,El servicio es bueno,real
-R002,2026-11-01,Guayaquil,35,Masculino,quincenal,3,No,Precios altos,real
-R003,2026-11-02,Cuenca,41,Femenino,semanal,5,Si,Excelente atención,real
-R004,2026-11-02,Quito,24,Masculino,ocasional,4,Si,,simulada
+respuesta_id,fecha,encuestador,consentimiento,mayor_18,reside_quito,compra_30_dias,cliente_retailandina,edad,frecuencia_visita,satisfaccion_general,recomendaria,interes_programa,beneficio_preferido,aspecto_mejora,comentario,origen
+R001,2026-11-05,E1,Sí,Sí,Sí,Sí,Sí,21,Quincenal,3,Sí,3,Productos o recompensas gratuitas,Rapidez en caja,,real
+R002,2026-11-05,E1,Sí,Sí,Sí,Sí,Sí,21,Quincenal,4,Sí,4,Descuentos directos,Rapidez en caja,,real
+R003,2026-11-05,E1,Sí,Sí,Sí,Sí,Sí,21,Mensual,4,Sí,4,Acumulación de puntos,Variedad de productos,,real
+R004,2026-11-08,E2,Sí,Sí,Sí,Sí,Sí,21,Mensual,5,Sí,2,Descuentos directos,Precios,sin comentarios,real
+R005,2026-11-08,E2,Sí,Sí,Sí,Sí,Sí,20,Menos de una vez al mes,5,Sí,3,Productos o recompensas gratuitas,Atención al cliente,,real
+R006,2026-11-08,E2,Sí,Sí,Sí,Sí,Sí,20,Semanal,4,Sí,4,Descuentos directos,Rapidez en caja,,real
+R007,2026-11-08,E3,Sí,Sí,Sí,Sí,Sí,20,Semanal,3,Sí,4,Descuentos directos,Precios,,real
+R008,2026-11-09,E2,Sí,Sí,Sí,Sí,Sí,21,Quincenal,3,Sí,4,Promociones personalizadas,Variedad de productos,,real
+R009,2026-11-09,E4,Sí,Sí,Sí,Sí,Sí,22,Mensual,4,Sí,3,Acumulación de puntos,Rapidez en caja,,real
+R010,2026-11-09,E4,Sí,Sí,Sí,Sí,Sí,19,Quincenal,3,Sí,4,Productos o recompensas gratuitas,Disponibilidad de productos,,real
+R011,2026-11-09,E4,Sí,No,Sí,Sí,Sí,27,Semanal,4,Sí,5,Promociones personalizadas,Atención al cliente,,real
+R012,2026-11-09,E3,Sí,Sí,Sí,Sí,Sí,20,Quincenal,3,Sí,2,Descuentos directos,Atención al cliente,,real
+R013,2026-11-09,E3,Sí,No,Sí,Sí,Sí,18,Mensual,4,Sí,2,Promociones personalizadas,Limpieza y comodidad,,real
+R014,2026-11-09,E3,Sí,Sí,No,Sí,Sí,22,Semanal,3,Sí,4,Acumulación de puntos,Variedad de productos,,real
+R015,2026-11-09,E4,Sí,Sí,Sí,Sí,Sí,29,Quincenal,4,Sí,2,Descuentos directos,Rapidez en caja,,real
+R016,2026-11-09,E4,Sí,No,Sí,Sí,Sí,19,Semanal,4,Sí,5,Productos o recompensas gratuitas,Precios,,real
+R017,2026-11-09,E3,Sí,Sí,Sí,No,Sí,19,Mensual,2,No,2,Productos o recompensas gratuitas,Disponibilidad de productos,,real
+R018,2026-11-09,E3,Sí,Sí,Sí,Sí,Sí,25,Semanal,4,Sí,4,Promociones personalizadas,Disponibilidad de productos,,real
+R019,2026-11-09,E2,Sí,Sí,Sí,Sí,Sí,21,Mensual,3,Sí,2,Promociones personalizadas,Precios,,real
+R020,2026-11-09,E2,Sí,Sí,Sí,Sí,No,,,,,,,,,real
+R021,2026-11-09,E1,Sí,Sí,Sí,Sí,Sí,21,Quincenal,4,Sí,3,Productos o recompensas gratuitas,Disponibilidad de productos,,real
+R022,2026-11-09,E1,Sí,Sí,Sí,Sí,No,,,,,,,,,real
+R023,2026-11-09,E1,Sí,Sí,Sí,Sí,Sí,21,Semanal,5,Sí,5,Acumulación de puntos,Ninguno,,real
