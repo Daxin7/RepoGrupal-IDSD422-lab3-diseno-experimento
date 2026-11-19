@@ -231,34 +231,21 @@ Tres personas respondieron "No" a "¿Tiene 18 años o más?" y después anotaron
 
 ## 5. Análisis de sesgos
 
-| Sesgo potencial | Mitigación |
-|---|---|
-| **1. Sesgo de selección o cobertura:** al contactar principalmente familiares, amigos y compañeros, podrían participar personas con edades, hábitos y condiciones socioeconómicas semejantes. | Diversificar los contactos, reclutar personas de distintos grupos de edad y frecuencias de compra, distribuir las invitaciones entre los cuatro integrantes y reconocer explícitamente el carácter no probabilístico de la muestra. |
-| **2. Sesgo de no respuesta y de respuesta:** algunas personas podrían ignorar la encuesta o responder favorablemente por cortesía, especialmente si conocen al encuestador. | Registrar invitaciones y rechazos, mantener un cuestionario breve y neutral, explicar que no existen respuestas correctas, permitir respuestas anónimas y evitar que el encuestador influya en las opciones elegidas. |
+La evidencia de esta sección sale solo de las respuestas reales (filtrando `origen = real`); las filas simuladas no se usan para hablar de sesgos.
 
-**Análisis complementario:**
+| Sesgo potencial | Qué se observó en los datos reales | Mitigación viable |
+|---|---|---|
+| **1. Sesgo de selección (cobertura):** al reclutar en la red de los integrantes, la muestra se parece a ellos y no a la población de clientes. | Las 16 respuestas válidas tienen entre 19 y 29 años (media de 21,4). En la base de clientes del curso, solo el 24,5 % de los adultos de Quito está en ese rango. No hay nadie de 30 años o más, un grupo con mucho peso entre quienes hacen las compras del hogar. | Fijar cuotas por grupo de edad (por ejemplo, 6 personas de 18–29, 12 de 30–44 y 6 de 45 o más, como en la corrida de la sección 3); pedir a cada integrante al menos dos contactos entre familiares mayores o vecinos; y, si la empresa entrega su base de clientes, reemplazar la conveniencia por el sorteo estratificado de la sección 3. |
+| **2. Sesgo de respuesta por cortesía:** quien conoce al encuestador tiende a contestar de forma más amable de lo que realmente piensa. | Las 16 personas respondieron que recomendarían RetailAndina, incluso las 6 que calificaron su satisfacción con un 3 (ni satisfecho ni insatisfecho). Un 100 % de recomendación junto a una satisfacción apenas favorable (62,5 % con 4 o 5) es una señal de respuestas complacientes. | Que la persona llene el formulario sola y sin que el integrante vea sus respuestas; recordar al inicio que no hay respuestas correctas y que nadie sabrá qué contestó; y cambiar el "Sí / No" de P4 por una escala de 0 a 10, que deja espacio para una recomendación tibia. |
 
-El sesgo de selección podría observarse si una gran mayoría de participantes perteneciera a un mismo intervalo de edad o tuviera la misma frecuencia de compra. Esto no demuestra por sí solo la existencia de sesgo, pero advierte una posible falta de diversidad.
+**Otros riesgos a vigilar:**
 
-El sesgo de no respuesta podría sospecharse si muchos participantes invitados no completan el formulario, especialmente cuando la falta de respuesta se concentra en un grupo conocido de invitados.
+- **No respuesta:** de las personas contactadas, **[COMPLETAR: n]** no contestaron el formulario (sección 7). Si quienes no respondieron son, por ejemplo, los contactos de más edad o los menos satisfechos, la muestra queda todavía más inclinada hacia lo positivo. Se mitiga con un recordatorio a los dos o tres días y manteniendo el formulario corto.
+- **Error en los filtros:** tres personas se contradijeron en la pregunta de edad (sección 4). Sus respuestas se excluyeron y el formulario debe corregirse para la próxima aplicación.
 
-El sesgo de respuesta podría manifestarse mediante una concentración poco habitual de puntuaciones máximas de satisfacción o recomendación. Sin embargo, un porcentaje elevado de respuestas positivas no constituye una demostración de sesgo: también puede reflejar satisfacción auténtica.
+**Qué se puede concluir y qué no:**
 
-**Indicador adicional de no respuesta:**
-
-Se calculará la tasa de respuesta:
-
-\[
-\text{Tasa de respuesta} =
-\frac{\text{Encuestas completas válidas}}
-{\text{Personas elegibles invitadas}} \times 100
-\]
-
-Se registrarán las invitaciones, las respuestas completas y los rechazos, sin publicar información personal de quienes no participaron.
-
-**Limitación metodológica:**
-
-Debido a la selección no probabilística, las conclusiones tendrán alcance exploratorio. No se utilizarán intervalos de confianza ni márgenes de error propios de un muestreo probabilístico para afirmar representatividad poblacional.
+Con 16 respuestas de personas jóvenes de la red del equipo, los resultados describen a ese grupo y no a todos los clientes de RetailAndina en Quito. Por eso no se calculan márgenes de error ni intervalos de confianza: suponen un muestreo aleatorio que aquí no existió.
 
 ## 6. Confidencialidad (RA3)
 
