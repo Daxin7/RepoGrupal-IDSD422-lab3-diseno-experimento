@@ -243,7 +243,7 @@ La evidencia de esta sección sale solo de las respuestas reales (filtrando `ori
 
 **Otros riesgos a vigilar:**
 
-- **No respuesta:** de las personas contactadas, **[COMPLETAR: n]** no contestaron el formulario (sección 7). Si quienes no respondieron son, por ejemplo, los contactos de más edad o los menos satisfechos, la muestra queda todavía más inclinada hacia lo positivo. Se mitiga con un recordatorio a los dos o tres días y manteniendo el formulario corto.
+- **No respuesta:** el equipo no llevó un registro de cuántas personas recibieron el formulario, así que no se sabe cuántas no contestaron (sección 7). Es una falla del proceso que se reconoce como limitación: si quienes no respondieron eran, por ejemplo, los contactos de más edad o los menos satisfechos, la muestra queda todavía más inclinada hacia lo positivo y no hay forma de comprobarlo. Para la próxima aplicación, cada integrante anotará cuántas invitaciones envía y se mandará un recordatorio a los dos o tres días.
 - **Error en los filtros:** tres personas se contradijeron en la pregunta de edad (sección 4). Sus respuestas se excluyeron y el formulario debe corregirse para la próxima aplicación.
 
 **Qué se puede concluir y qué no:**
@@ -303,8 +303,8 @@ Con 23 personas de una red conocida, la combinación de edad, fecha e integrante
 
 | Etapa | Personas |
 |---|---:|
-| Personas contactadas | **[COMPLETAR: n]** |
-| No contestaron el formulario (no respuesta) | **[COMPLETAR: n]** |
+| Personas contactadas | No registrado |
+| No contestaron el formulario (no respuesta) | No registrado |
 | Respondieron el formulario | 23 |
 | Terminaron en el filtro "compra habitual en RetailAndina" | 2 |
 | Excluidas por contradicción en el filtro de edad | 3 |
@@ -312,7 +312,7 @@ Con 23 personas de una red conocida, la combinación de edad, fecha e integrante
 | Excluidas por no haber comprado en los últimos 30 días | 1 |
 | **Respuestas reales válidas** | **16** |
 
-**Tasa de respuesta** = 23 ÷ personas contactadas × 100 = **[COMPLETAR] %**.
+**No respuesta:** durante la recolección ningún integrante anotó a cuántas personas les envió el formulario, por lo que el conteo de quienes no respondieron no está disponible y la tasa de respuesta (respondieron ÷ contactadas × 100) no se puede calcular. Se declara así en lugar de estimarlo sin base. Lo que sí consta es que cada integrante obtuvo entre 5 y 6 formularios, cerca de la meta de 6. Para una próxima aplicación, cada integrante llevará una lista simple de invitaciones enviadas, sin datos personales, solo el conteo.
 
 Las 23 filas reales están en el CSV, incluidas las que no pasaron los filtros, para que la exclusión quede a la vista y se pueda repetir con código.
 
