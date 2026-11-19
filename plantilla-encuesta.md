@@ -53,45 +53,42 @@ Todos los indicadores se calculan solo con las respuestas reales válidas (`orig
 
 **Población:**
 
-Personas de 18 años o más, residentes en el Distrito Metropolitano de Quito, que hayan realizado compras de productos de consumo masivo en supermercados al menos una vez durante los últimos 30 días.
-
-Para mantener la coherencia del cuestionario, se solicitará a cada participante que responda considerando el supermercado en el que compra con mayor frecuencia.
+Personas de 18 años o más que viven en el Distrito Metropolitano de Quito, que compraron en un supermercado durante los últimos 30 días y que hacen sus compras habituales en RetailAndina.
 
 **Límites y justificación:**
 
-| Criterio | Delimitación | Justificación |
+| Límite | Quién entra | Por qué |
 |---|---|---|
-| Región geográfica | Distrito Metropolitano de Quito | Permite realizar una recolección alcanzable para los integrantes del equipo. |
-| Edad | Personas de 18 años o más | Facilita la participación autónoma y evita procedimientos adicionales relacionados con menores de edad. |
-| Frecuencia de compra | Al menos una compra durante los últimos 30 días | Permite recopilar experiencias recientes de compra. |
-| Tipo de establecimiento | Supermercados de productos de consumo masivo | Mantiene la investigación relacionada con el sector comercial de RetailAndina. |
-| Residencia | Residentes de Quito | Evita mezclar experiencias de ciudades con condiciones comerciales diferentes. |
-| Participación | Voluntaria, con consentimiento informado | Respeta la autonomía y privacidad de los participantes. |
+| Región | Residentes del Distrito Metropolitano de Quito | Es la ciudad donde vive todo el equipo, así que la recolección es alcanzable; además evita mezclar ciudades con precios, competencia y tiendas distintas. |
+| Edad | 18 años o más | Son personas que deciden y pagan sus compras, y que pueden dar su consentimiento sin intervención de un representante. |
+| Compra reciente | Al menos una compra en un supermercado en los últimos 30 días | Asegura que la persona califique su experiencia con un recuerdo fresco y no con una impresión antigua. |
+| Cliente de RetailAndina | Hace sus compras habituales en RetailAndina | Las preguntas son sobre RetailAndina y su programa; quien no compra ahí no puede calificar la tienda. Este límite se agregó al pasar del borrador al formulario final. |
+| Participación | Voluntaria, con consentimiento informado | La encuesta solo continúa si la persona acepta el tratamiento de sus datos. |
+
+**Cómo se verifica:** el formulario abre con el consentimiento y cuatro preguntas filtro (sección 4). Si la persona no compra habitualmente en RetailAndina, el formulario termina ahí. Los otros tres filtros no cortaban el formulario, así que se aplican al limpiar los datos: solo cuentan como válidas las respuestas con los cuatro filtros en "Sí".
 
 **Criterios de inclusión:**
 
-- Tener al menos 18 años.
-- Residir en Quito.
-- Haber comprado en un supermercado durante los últimos 30 días.
-- Aceptar voluntariamente participar en la encuesta.
-- Responder una sola vez al cuestionario.
+- Tener 18 años o más.
+- Vivir en Quito.
+- Haber comprado en un supermercado en los últimos 30 días.
+- Hacer las compras habituales en RetailAndina.
+- Aceptar participar y responder una sola vez.
 
 **Criterios de exclusión:**
 
-- Personas menores de 18 años.
-- Personas que no residen en Quito.
-- Personas que no hayan comprado en supermercados durante los últimos 30 días.
-- Registros duplicados, respuestas sin consentimiento o formularios que no permitan comprobar los criterios de elegibilidad.
+- No cumplir alguno de los cuatro filtros.
+- No dar el consentimiento.
+- Registros duplicados.
+- Respuestas en las que no se puede confirmar la elegibilidad, por ejemplo, una persona que responde que no tiene 18 años pero luego anota una edad mayor.
 
 **Unidad de análisis:**
 
-Cada consumidor adulto elegible que complete la encuesta.
+Cada cliente habitual adulto de RetailAndina en Quito que completa la encuesta.
 
 **Marco de selección:**
 
-Contactos y personas referidas a las que los integrantes del equipo puedan acceder y que cumplan los criterios establecidos.
-
-No se dispone de un listado completo de todos los compradores adultos de supermercados de Quito. Por tanto, la población objetivo es más amplia que el conjunto de personas accesibles, una limitación que deberá considerarse en la interpretación de resultados.
+El equipo no tiene acceso a una lista de todos los clientes de RetailAndina con datos de contacto. En la práctica, el marco fue la red de contactos de los cuatro integrantes (familiares, amigos, compañeros y sus referidos) que cumplían los filtros. Esa red es mucho más pequeña y parecida entre sí que la población, y esa diferencia se tiene en cuenta al interpretar los resultados (sección 5).
 
 ## 3. Método de muestreo
 
